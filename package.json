@@ -4,6 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "scrap:dev": "cross-env NODE_ENV=development nodemon scrap.js --watch scrap.js",
+    "scrap:prod": "cross-env NODE_ENV=production node ./scrap.js",
+    "fetch:dev": "cross-env NODE_ENV=development nodemon fetch.js --watch fetch.js",
+    "fetch:prod": "cross-env NODE_ENV=production node ./fetch.js",
     "start": "node ./app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
