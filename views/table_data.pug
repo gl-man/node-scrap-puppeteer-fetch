@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  table.table.table-striped
+    thead.thead-dark
+      tr
+        each key in keys
+          th(scope='col') #{key}
+    tbody
+      each item, index in data
+        tr
+        each key in keys
+          th(scope='row') #{item[key]}

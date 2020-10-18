@@ -1,0 +1,6 @@
+extends layout
+
+block content
+  .list-group
+    each item in dbs
+      a.list-group-item.list-group-item-action(href='/' + item)  #{item}

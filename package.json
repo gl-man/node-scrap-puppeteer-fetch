@@ -8,15 +8,23 @@
     "scrap:prod": "cross-env NODE_ENV=production node ./scrap.js",
     "fetch:dev": "cross-env NODE_ENV=development nodemon fetch.js --watch fetch.js",
     "fetch:prod": "cross-env NODE_ENV=production node ./fetch.js",
-    "start": "node ./app.js",
+    "start:dev": "cross-env NODE_ENV=development nodemon ./bin/www --watch ./public --watch ./views --watch app.js",
+    "start:prod": "cross-env NODE_ENV=production node ./bin/www",
+    "start": "cross-env PORT=8080 npm run start:prod",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.20.0",
+    "cookie-parser": "^1.4.5",
+    "debug": "^4.2.0",
     "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "http-errors": "^1.8.0",
+    "morgan": "^1.10.0",
     "mysql": "^2.18.1",
+    "pug": "^3.0.0",
     "puppeteer": "^5.3.1"
   },
   "devDependencies": {
