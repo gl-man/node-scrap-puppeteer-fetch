@@ -54,12 +54,13 @@ const saveData = (keys, data) => {
   const browser = await puppeteer.launch({
     headless: process.env.NODE_ENV === "production",
     slowMo: process.env.NODE_ENV === "production" ? 0 : 80,
+    args: ['--no-sandbox'],
   });
 
   connection.connect((err) => {
     if (err) {
       console.error("Error connecting to DB");
-      console.error(error);
+      console.error(err);
       return;
     }
     console.log("DB Connection established");
@@ -128,8 +129,7 @@ const saveData = (keys, data) => {
       throw new Error(`Can't find '${select_comp_selector} button.dropdown-toggle' on the page`);
     });
     await page.click(`${select_comp_selector} button.dropdown-toggle`);
-    await page.waitForSelector(`${select_comp_selector}.open`);
-    await page.click(`${select_comp_selector} .dropdown-menu.inner > li:last-child`);
+    await page.click(`${select_comp_selector} .dropdown-menu.inner > li:last-child > a`);
     await page.waitForResponse((response) => response.url().endsWith("/dates") && response.status() === 200);
 
     console.log("Ready for scraping");

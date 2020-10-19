@@ -1,13 +1,17 @@
 extends layout
 
 block content
-  table.table.table-striped
-    thead.thead-dark
-      tr
-        each key in keys
-          th(scope='col') #{key}
-    tbody
-      each item, index in data
+  a.btn.btn-primary.mb-3(href="/") back
+  if data && data.length && keys && keys.length
+    table.table.table-striped
+      thead.thead-dark
         tr
-        each key in keys
-          th(scope='row') #{item[key]}
+          each key in keys
+            th(scope='col') #{key}
+      tbody
+        each item in data
+          tr
+            each key in keys
+              td #{item[key]}
+  else
+    h6.text-center.font-weight-bold No Data
